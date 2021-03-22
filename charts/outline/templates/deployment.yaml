@@ -11,11 +11,6 @@ spec:
       {{- include "outline.selectorLabels" . | nindent 6 }}
   template:
     metadata:
-      annotations:
-        checksum/secret: {{ include (print $.Template.BasePath "/secret.yaml") . | sha256sum }}
-        {{- range $key, $value := .Values.podAnnotations }}
-        {{ $key }}: {{ $value | quote }}
-        {{- end }}
       labels:
         {{- include "outline.selectorLabels" . | nindent 8 }}
     spec:
