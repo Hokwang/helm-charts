@@ -32,9 +32,8 @@ spec:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
-          envFrom:
-            - secretRef:
-                name: {{ include "outline.fullname" . }}
+          env:
+{{ toYaml .Values.env | indent 12 }}
           ports:
             - name: http
               containerPort: {{ .Values.env.PORT | default 3000 }}
