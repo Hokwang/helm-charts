@@ -9,12 +9,13 @@ imagePullSecrets: []
   # - name: ""
 
 env:
-  SECRET_KEY: ""
-  UTILS_SECRET: ""
-  DATABASE_URL: ""  # postgres://user:pass@localhost:5532/outline"
+  SECRET_KEY: "0c56bbacc93edc61856559d5d99a2199fbde8ed3e9ed5ff71d4eb7fdef28ed58"
+  UTILS_SECRET: "0c56bbacc93edc61856559d5d99a2199fbde8ed3e9ed5ff71d4eb7fdef28ed58"
+  DATABASE_URL: "postgres://user:pass@localhost:5532/outline"
   DATABASE_URL_TEST: ""
-  REDIS_URL: ""  # redis://localhost:6479
-  URL: ""  # http://localhost:3000
+  PGSSLMODE: "disable"
+  REDIS_URL: "redis://:pass@localhost:6479"
+  URL: "http://localhost:3000"
   PORT: "3000"
   SLACK_KEY: ""  # get_a_key_from_slack
   SLACK_SECRET: ""  # get_the_secret_of_above_key
@@ -23,9 +24,9 @@ env:
 
   # OPTIONAL
   CDN_URL: ""
-  FORCE_HTTPS: ""  # true
-  ENABLE_UPDATES: ""  # true
-  DEBUG: ""  # cache,presenters,events,emails,mailer,utils,multiplayer,server,services
+  FORCE_HTTPS: "false"
+  ENABLE_UPDATES: "true"
+  DEBUG: "cache,presenters,events,emails,mailer,utils,multiplayer,server,services"
   ALLOWED_DOMAINS: ""
   SLACK_VERIFICATION_TOKEN: ""  # your_token
   SLACK_APP_ID: ""  # A0XXXXXXX
