@@ -21,6 +21,13 @@ spec:
       serviceAccountName: {{ include "outline.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      initContainers:
+        - name: init-db
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          command: ['sh', '-c', 'yarn sequelize:migrate --env=production-ssl-disabled']
+          envFrom:
+            - configMapRef:
+                name: {{ template "outline.fullname" . }}
       containers:
         - name: {{ .Chart.Name }}
           securityContext:
